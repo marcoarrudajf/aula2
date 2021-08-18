@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "servicos/servicoMensagemSessao.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,11 +15,11 @@ session_start();
 
 <form action="script.php" method="post">
     <?php
-    $mensagemDeErro = isset($_SESSION['mensagem-de-erro']) ? $_SESSION['mensagem-de-erro'] : '';
+    $mensagemDeErro = obterMensSucesso();
     if(!empty($mensagemDeErro)){
         echo $mensagemDeErro;
     }
-    $mensagemDeSucesso = isset($_SESSION['mensagem-de-sucesso']) ? $_SESSION['mensagem-de-sucesso'] : '';
+    $mensagemDeSucesso = obterMensDeErro();
     if(!empty($mensagemDeSucesso)) {
         echo $mensagemDeSucesso;
     }
@@ -28,7 +28,7 @@ session_start();
     ?>
     <p>Seu nome: <input type="text" name="nome"  maxlength="45" /></p>
     <p>Sua idade: <input type="text" name="idade" maxlength="3" /></p>
-    <p>digite seu CPF: <input type="text" name="cpf" size="11" /></p>
+    <!--<p>digite seu CPF: <input type="text" name="cpf" size="11" /></p>-->
 
     <p><input type="submit" /></p>
 </form>
